@@ -28,14 +28,14 @@ class NavTocPlugin(plugins.BasePlugin):
         elif item.is_page or item.is_link:
             result = f"<li><a href=\"{item.abs_url}\">{item.title}</a></li>"
         elif item.is_section:
-            toc_front = f"<li>{item.title}</li>"
+            toc_front = item.title
             toc = ""
             for child_item in item.children:
                 if child_item.is_page and child_item.is_index:
-                    toc_front = f"<li><a href=\"{child_item.abs_url}\">{item.title}</a></li>"
+                    toc_front = f"<a href=\"{child_item.abs_url}\">{item.title}</a>"
                 else:
                     toc += self._format_navtoc(child_item, page)
-            result = f"{toc_front}<ul>{toc}</ul>"
+            result = f"<li>{toc_front}<ul>{toc}</ul></li>"
 
         self.nav_cache[item.title + item.__class__.__qualname__] = result
         return result
@@ -44,7 +44,7 @@ class NavTocPlugin(plugins.BasePlugin):
         toc = ""
         for item in items:
             toc += self._format_navtoc(item, page)
-        return toc
+        return f"<ul>{toc}</ul>"
 
     def on_page_context(
             self, context: Dict[str, Any], *, page: Page, config: MkDocsConfig, nav
