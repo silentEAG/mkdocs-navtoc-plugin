@@ -1,0 +1,2 @@
+# mkdocs-navtoc-plugin
+
