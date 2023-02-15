@@ -15,10 +15,16 @@ setup(
     install_requires=[
         'mkdocs>=1'
     ],
-    packages=find_packages(exclude=['*.tests', '*.tests.*']),
     entry_points={
         'mkdocs.plugins': [
             'navtoc = plugin:NavTocPlugin'
+        ]
+    },
+    include_package_data=True,
+    package_data={
+        'plugin': [
+            'templates/*.html',
+            'css/*.css'
         ]
     }
 )
