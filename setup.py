@@ -15,6 +15,7 @@ setup(
     install_requires=[
         'mkdocs>=1'
     ],
+    packages=find_packages(exclude=['*.tests', '*.tests.*']),
     entry_points={
         'mkdocs.plugins': [
             'navtoc = mkdocs_navtoc_plugin:NavTocPlugin'
