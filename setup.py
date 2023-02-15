@@ -17,12 +17,12 @@ setup(
     ],
     entry_points={
         'mkdocs.plugins': [
-            'navtoc = plugin:NavTocPlugin'
+            'navtoc = mkdocs_navtoc_plugin:NavTocPlugin'
         ]
     },
     include_package_data=True,
     package_data={
-        'plugin': [
+        'mkdocs_navtoc_plugin': [
             'templates/*.html',
             'css/*.css'
         ]
