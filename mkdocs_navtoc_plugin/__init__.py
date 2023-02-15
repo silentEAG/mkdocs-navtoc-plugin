@@ -86,8 +86,3 @@ class NavTocPlugin(plugins.BasePlugin):
             children = page.parent.children if page.parent else self.nav.items
             context['page'].content += self.format_navtoc(children, page)
             return context
-
-
-if __name__ == "__main__":
-    
-    pass
