@@ -7,11 +7,6 @@ from mkdocs.structure.pages import Page
 from mkdocs.utils import copy_file
 import os
 
-try:
-    ModuleNotFoundError
-except NameError:
-    ModuleNotFoundError = ImportError
-    
 PLUGIN_DIR = os.path.dirname(os.path.realpath(__file__))
 TEMPLATE_DIR = os.path.join(PLUGIN_DIR, "templates/list.html")
 EXTRA_CSS = ["css/navlist.css"]
