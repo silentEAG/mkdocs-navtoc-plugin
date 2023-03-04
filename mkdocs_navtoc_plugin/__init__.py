@@ -37,11 +37,17 @@ class NavTocPlugin(plugins.BasePlugin):
             assert os.path.exists(src_file_path)
             copy_file(src_file_path, dest_file_path)
 
+    def calc_name(self, item: Page):
+        res = item.title
+        if item.parent:
+            res += item.parent.title
+        return res
+
     def get_cache(self, item: Page):
-        return self.nav_cache.get(item.title)
+        return self.nav_cache.get(self.calc_name(item))
     
     def set_cache(self, item: Page, doc: DocTree):
-        self.nav_cache[item.title] = doc
+        self.nav_cache[self.calc_name(item)] = doc
     
     def generate_navtoc(self, item: Page, page: Page):
         if self.get_cache(item):
